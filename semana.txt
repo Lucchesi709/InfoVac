@@ -1,0 +1,17 @@
+Implementar pagina de calendario 
+Implementar pagina de agenda
+Implementar pagina de configuracoes
+Implementar notificacoes
+Implementar noticias dinamicas no portal
+Avaliacao da aplicacao (teste)
+Editar perfil
+Tela de carteira de vacina
+
+/////////////////////////////////////////////////////////////////////////////
+
+Joao Lucchesi - Implementar notificacoes
+Diogo Fasciani - Implementar noticias dinamicas no portal
+Henrique Rotsen - Calendario
+Daniel Lucas - Agenda 
+Lucas Satlher - Editar pefil
+Lucas Vinicius -
