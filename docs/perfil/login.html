@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+     crossorigin="anonymous">
+     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="estilologin.css">
+    <script>
+        function showhide()
+        {
+            var div = document.getElementById("newpost");
+       
+             if(idade()>=18){
+ 
+                div.style.display = "none";
+            }
+            else if(idade()<18) {
+            div.style.display = "inline";
+            }
+        }
+        function formatar(mascara, documento)
+        {
+            var i = documento.value.length;
+            var saida = mascara.substring(0,1);
+            var texto = mascara.substring(i);
+  
+             if (texto.substring(0,1) != saida)
+            {
+                 documento.value += texto.substring(0,1);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+
+        <section id="header">
+            <div class="container">    
+                <nav class="navbar navbar-expand-lg" id="cabecalho">
+                    <h5 class="navbar-brand" id="Logo">InfoVac</h5>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-none d-sm-none" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                          <li class="nav-item">
+                            <a class="nav-link" href="../../index.html">Inicio</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">FAQ</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Suporte</a>
+                          </li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #07614c;" id="menu">
+                    <a class="navbar-brand d-md-none" href="#">Menu</a>
+                    <button class="navbar-toggler justify-content-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                      <ul class="navbar-nav">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="perfil.html">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Carteira de Vacinação</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Agenda</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Calendario</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link">Configurações</a>
+                        </li>
+                      </ul>
+                    </div>
+                </nav>
+                
+            </div>
+        </section>
+
+    </header>
+	<div id="login">
+		<h3 class="text-center text-white pt-5">Novo Usuário</h3>
+		<div class="container">
+			<div id="login-row" class="row justify-content-center align-items-center">
+				<div id="login-column" class="col-md-6">
+					<div id="login-box" class="col-md-12">
+						<form id="login-form" class="form" method="post" onsubmit="loginUser (this)">
+							<h3 class="text-center text-info" style="color: #007b5e !important;">Login</h3>
+							<div class="form-group">
+								<label for="username" class="text-info" style="color: #007b5e !important;">Usuário</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info" style="color: #007b5e !important;">Senha</label><br>
+                                <input type="text" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group text-right">                                
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Entrar" style="background-color:#007b5e">
+                            </div>
+                        </form>
+                    </div>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal" style="background-color:#007b5e">Novo usuário</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login App</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div id="login-box" class="col-md-12">
+                <form id="login-form" class="form" method="post" onsubmit="loginUser (this)">
+                    <h3 class="text-center text-info" style="color: #007b5e !important;">Novo usuário</h3>
+                    <div class="form-group">
+                        <label for="login" class="text-info" style="color: #007b5e !important;">Usuário</label><br>
+                        <input type="text" name="txt_login" id="txt_login" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="nome" class="text-info" style="color: #007b5e !important;">Nome completo</label><br>
+                        <input type="text" name="txt_nome" id="txt_nome" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="login" class="text-info" style="color: #007b5e !important;">Sexo</label><br>
+                          <select required id="txt_sexo" name="Sexo" class="form-control">
+                              <option value=""></option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-info" for="Nascimento" style="color: #007b5e !important;">Nascimento</label>  
+                        <input id="txt_nasc" name="txt_nasc dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade" class="text-info" style="color: #007b5e !important;">Cidade</label><br>
+                        <input type="text" name="txt_cidade" id="txt_cidade" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="estado" class="text-info" style="color: #007b5e !important;">Estado</label><br>
+                        <input type="text" name="txt_estado" id="txt_estado" class="form-control" maxlength="2">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="text-info" style="color: #007b5e !important;">email</label><br>
+                        <input type="text" name="txt_email" id="txt_email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="senha" class="text-info" style="color: #007b5e !important;">Senha</label><br>
+                        <input type="password" name="txt_senha" id="txt_senha" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="senha2" class="text-info" style="color: #007b5e !important;">Confirmação de Senha</label><br>
+                        <input type="password" name="txt_senha2" id="txt_senha2" class="form-control">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#007b5e">Cancelar</button>
+          <button type="button" id="btn_salvar" class="btn btn-info" style="background-color:#007b5e">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <section id="footer">
+        <div class="container">
+            <div class="row text-center text-xs-center text-sm-left text-md-left">
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <h5>Links Rápidos</h5>
+                    <ul class="list-unstyled quick-links">
+                        <li><a href="../../index.html"><i class="fa fa-angle-double-right"></i>Portal</a></li>
+                        <li><a href="../quemsomos/quemsomos.html"><i class="fa fa-angle-double-right"></i>Quem Somos</a></li>
+                        <li><a href="https://saude.gov.br/"><i class="fa fa-angle-double-right"></i>Ministério Da
+                                Saude</a></li>
+                        <li><a href="https://coronavirus.saude.gov.br/"><i
+                                    class="fa fa-angle-double-right"></i>CORONAVíRUS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                    <ul class="list-unstyled list-inline social text-center">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/"><i
+                                    class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/"><i
+                                    class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/"><i
+                                    class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.google.com.br/"><i
+                                    class="fa fa-google"></i></a></li>
+                        <li class="list-inline-item"><a href="https://mail.google.com/mail/u/0/" target="_blank"><i
+                                    class="fa fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                    <p class="h6">© Todos os direitos reservados.<a class="text-green ml-2" href="#"
+                            target="_blank">InfoVac</a></p>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </section>
+</footer>
+    <script src="login.js"></script>
+    <script>
+        
+        // Declara uma função para processar o formulário de login
+        function processaFormLogin (event) {                
+                // Cancela a submissão do formulário para tratar sem fazer refresh da tela
+                event.preventDefault ();
+
+                // Obtem os dados de login e senha a partir do formulário de login
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+
+                // Valida login e se estiver ok, redireciona para tela inicial da aplicação
+                resultadoLogin = loginUser (username, password);
+                if (resultadoLogin) {
+                    window.location.href = 'perfil.html';
+                }
+                else { // Se login falhou, avisa ao usuário
+                    alert ('Usuário ou senha incorretos');
+                }
+        }
+
+        function salvaLogin (event) {
+            // Cancela a submissão do formulário para tratar sem fazer refresh da tela
+            event.preventDefault ();
+
+            // Obtem os dados do formulário
+            let login  = document.getElementById('txt_login').value;
+            let nome   = document.getElementById('txt_nome').value;
+            let email  = document.getElementById('txt_email').value;
+            let data   = document.getElementById('txt_nasc').value;
+            let cidade = document.getElementById('txt_cidade').value;
+            let estado = document.getElementById('txt_estado').value;
+            let senha  = document.getElementById('txt_senha').value;
+            let senha2 = document.getElementById('txt_senha2').value;
+            let select = document.getElementById('txt_sexo');
+			let sexo = select.options[select.selectedIndex].value;
+            
+            if (senha != senha2) {
+                alert ('As senhas informadas não conferem.');
+                return
+            }
+
+            // Adiciona o usuário no banco de dados
+            addUser (nome, login, senha, email, sexo, data, cidade, estado);
+            alert ('Usuário salvo com sucesso. Proceda com o login para ');
+
+            // Oculta a div modal do login
+            //document.getElementById ('loginModal').style.display = 'none';
+            $('#loginModal').modal('hide');
+        }
+
+        // Associa a funçao processaFormLogin  formulário adicionado um manipulador do evento submit
+        document.getElementById ('login-form').addEventListener ('submit', processaFormLogin);
+
+
+        // Associar salvamento ao botao
+        document.getElementById ('btn_salvar').addEventListener ('click', salvaLogin);        
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+</body>
+</html>

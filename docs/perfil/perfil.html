@@ -8,9 +8,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="perfil.css">
     <title>InfoVac</title>
+    <script src="../login/login.js"></script>
+    <script>
+      // Verifica se o usuário já esta logado e se negativo, redireciona para tela de login        
+      if (!usuarioCorrente.login) {
+            window.location.href = LOGIN_URL;
+      }
+  
+        function initPage() {
+  
+            // Associa a função de logout ao botão
+            document.getElementById('btn_logout').addEventListener('click', logoutUser);
+  
+            // Informa o nome do usuário logado
+            document.getElementById('nomeUsuario').innerHTML = usuarioCorrente.nome;
+            document.getElementById('sexoUsuario').innerHTML = usuarioCorrente.sexo;
+            document.getElementById('nascUsuario').innerHTML = usuarioCorrente.data;
+            document.getElementById('cidadeUsuario').innerHTML = usuarioCorrente.cidade;
+            document.getElementById('estadoUsuario').innerHTML = usuarioCorrente.estado;
+  
+            // Lista os usuários 
+            exibeUsuarios ();
+        }
+  
+        // Associa ao evento de carga da página a função para verificar se o usuário está logado
+        window.addEventListener('load', initPage);
+    </script>
 </head>
 
 <body>
+  
     <!-- Header -->
     <section id="header">
       <div class="container">    
@@ -42,7 +69,7 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="perfil.html">Perfil</a>
+          <a class="nav-link" href="#">Perfil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Carteira de Vacinação</a>
@@ -56,6 +83,9 @@
         <li class="nav-item">
           <a class="nav-link">Configurações</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login/Cadastro</a>
+        </li>
         </ul>
       </div>
     </nav>
@@ -63,7 +93,6 @@
       </div>
   </section>
     <!-- Header -->
-
     <main class="container main">
 
       <section class="row perfil">
@@ -72,19 +101,19 @@
           <img src="imagens_perfil/perfil.png" alt="">
         </div>
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 dados">
-          <p><strong>Nome: </strong></p><br>
-          <p><strong>Data de Nascimento: </strong></p><br>
-          <p><strong>Gênero: </strong></p><br>
-          <p><strong>Cidade: </strong></p><br>
-          <p><strong>Estado: </strong></p><br>
+          <p><strong>Nome: </strong><span id="nomeUsuario"></span></p><br>
+          <p><strong>Data de Nascimento: </strong><span id="nascUsuario"></span></p><br>
+          <p><strong>Gênero: </strong><span id="sexoUsuario"></span></p><br>
+          <p><strong>Cidade: </strong><span id="cidadeUsuario"></p><br>
+          <p><strong>Estado: </strong><span id="estadoUsuario"></span></p><br>
         </div>
 
-        <div class="col-6 col-sm-6 col-md-4 col-lg-4 dados"> 
-          <p>Joana Maria dos Santos</p><br>
-          <p>12/03/1975</p><br>
-          <p>Mulher</p><br>
-          <p>Belo Horizonte</p><br>
-          <p>Minas Gerais</p><br>
+        <div id="table-usuarios" class="col-6 col-sm-6 col-md-4 col-lg-4 dados"> 
+          <p></p><br>
+          <p></p><br>
+          <p></p><br>
+          <p></p><br>
+          <p></p><br>
         </div>
         <div class="col-6 col-sm-6 col-md-4 col-lg-3">
          
@@ -92,6 +121,7 @@
         <div class="col-8 col-sm-8 col-md-8 col-lg-8 login">
           <button type="button" class="btn btn-primary"><span><i class="fa fa-facebook"></i></span></i><span>Vincular ao Facebook</span></button>
           <button type="button" class="btn btn-danger"><span><i class="fa fa-google"></i></span></i>Vincular ao Google</button>
+          <button type="button" id="btn_logout" class="btn btn-danger">Efetuar Logout</button>
         </div>
 
       </section>
@@ -111,6 +141,19 @@
       </section>
 
     </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Footer -->
     <section id="footer">
