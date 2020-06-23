@@ -1,5 +1,3 @@
-//
-//
 // Disciplina: Trabalho Interdisciplinar - Aplicações Web
 // Professor: Rommel Vieira Carneiro (rommelcarneiro@gmail.com)
 //
@@ -134,3 +132,79 @@ function setUserPass () {
 
 // Inicializa as estruturas utilizadas pelo LoginApp
 initLoginApp ();
+
+
+
+
+
+
+
+//FIM DE LOGIN-INICIO DE EDICAO DE DADOS
+
+    let cont=0;
+    function tornaEditavel(){                         
+        cont++;
+        if(cont%2==0){
+            if(cont>1){
+                let Tot_usuariosJSON = localStorage.getItem('db_usuarios');
+                db_usuarios= JSON.parse(Tot_usuariosJSON);
+                for (var i = 0; i < db_usuarios.usuarios.length; i++) {
+                    if(db_usuarios.usuarios[i].id==usuarioCorrente.id){
+                        db_usuarios.usuarios[i].nome = usuarioCorrente.nome;
+                        db_usuarios.usuarios[i].sexo = usuarioCorrente.sexo;
+                        db_usuarios.usuarios[i].data = usuarioCorrente.data;
+                        db_usuarios.usuarios[i].cidade = usuarioCorrente.cidade;
+                        db_usuarios.usuarios[i].estado = usuarioCorrente.estado;
+                    }
+                }
+                localStorage.setItem('db_usuarios', JSON.stringify (db_usuarios));
+            }
+            document.getElementById('Editar').innerText='Editar';
+            let conteudoHTML=`
+            <p><strong>Nome: </strong><span id="nomeUsuario"></span></p><br>
+            <p><strong>Data de Nascimento: </strong><span id="nascUsuario"></span></p><br>
+            <p><strong>Gênero: </strong><span id="sexoUsuario"></span></p><br>
+            <p><strong>Cidade: </strong><span id="cidadeUsuario"></p><br>
+            <p><strong>Estado: </strong><span id="estadoUsuario"></span></p><br>`;
+            document.querySelector('.dados').innerHTML= conteudoHTML;
+            document.getElementById('nomeUsuario').innerHTML = usuarioCorrente.nome;
+            document.getElementById('sexoUsuario').innerHTML = usuarioCorrente.sexo;
+            document.getElementById('nascUsuario').innerHTML = usuarioCorrente.data;
+            document.getElementById('cidadeUsuario').innerHTML = usuarioCorrente.cidade;
+            document.getElementById('estadoUsuario').innerHTML = usuarioCorrente.estado;
+            //console.log("Tirei os campos de escrita");
+        }
+        else{
+            document.getElementById('Editar').innerText='Salvar';
+            let conteudoHTML=`
+            <p><label for="Nome"><strong>Nome: </strong></label><input type="text" name="Nome" id="Nome"></p><br>
+            <p><label for="DataNasc"><strong>Data de Nascimento: </strong></label><input type="text" name="DataNasc" id="DataNasc"></p><br>
+            <p><label for="Genero"><strong>Gênero: </strong></label><input type="text" name="Genero" id="Genero"></p><br>
+            <p><label for="Cidade"><strong>Cidade: </strong></label><input type="text" name="Cidade" id="Cidade"></p><br>
+            <p><label for="Estado"><strong>Estado: </strong></label><input type="text" name="Estado" id="Estado"></p><br>`;
+            document.querySelector('.dados').innerHTML= conteudoHTML;
+            document.getElementById('Nome').value = usuarioCorrente.nome;
+            document.getElementById('Nome').onchange=()=>{
+                usuarioCorrente.nome = document.getElementById('Nome').value;
+            }
+            document.getElementById('DataNasc').value = usuarioCorrente.data;
+            document.getElementById('DataNasc').onchange=()=>{
+                usuarioCorrente.data = document.getElementById('DataNasc').value;
+            }
+            document.getElementById('Genero').value = usuarioCorrente.sexo;
+            document.getElementById('Genero').onchange=()=>{
+                usuarioCorrente.sexo = document.getElementById('Genero').value;
+            }
+            document.getElementById('Cidade').value = usuarioCorrente.cidade;
+            document.getElementById('Cidade').onchange=()=>{
+                usuarioCorrente.cidade = document.getElementById('Cidade').value;
+            }
+            document.getElementById('Estado').value = usuarioCorrente.estado;
+            document.getElementById('Estado').onchange=()=>{
+                usuarioCorrente.estado = document.getElementById('Estado').value;
+            }
+            //console.log("coloquei os campos de escrita");
+            
+        }
+        
+    }

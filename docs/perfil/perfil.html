@@ -4,6 +4,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/09cc489bfb.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="perfil.css">
@@ -26,9 +27,6 @@
             document.getElementById('nascUsuario').innerHTML = usuarioCorrente.data;
             document.getElementById('cidadeUsuario').innerHTML = usuarioCorrente.cidade;
             document.getElementById('estadoUsuario').innerHTML = usuarioCorrente.estado;
-  
-            // Lista os usuários 
-            exibeUsuarios ();
         }
   
         // Associa ao evento de carga da página a função para verificar se o usuário está logado
@@ -75,13 +73,16 @@
           <a class="nav-link" href="#">Carteira de Vacinação</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../agenda/agenda.html">Agenda</a>
+          <a class="nav-link" href="#">Agenda</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Calendario</a>
         </li>
         <li class="nav-item">
           <a class="nav-link">Configurações</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login/Cadastro</a>
         </li>
         </ul>
       </div>
@@ -105,7 +106,9 @@
           <p><strong>Estado: </strong><span id="estadoUsuario"></span></p><br>
         </div>
 
-        <div id="table-usuarios" class="col-6 col-sm-6 col-md-4 col-lg-4 dados"> 
+        <div id="table-usuarios" class="col-6 col-sm-6 col-md-4 col-lg-4"> 
+          <i class="far fa-edit"></i>
+          <button id="Editar" onclick="tornaEditavel()">Editar</button>
           <p></p><br>
           <p></p><br>
           <p></p><br>
