@@ -34,7 +34,7 @@ function executaPesquisa() {
   xhr.onload = exibeNoticias;
   xhr.open(
     "GET",
-    `https://newsapi.org/v2/top-headlines?language=en&q=covid&apiKey=c80be78f34604a4a8bd373642b94f04b`
+    `https://newsapi.org/v2/top-headlines?country=br&q=covid&q=vacina&apiKey=c80be78f34604a4a8bd373642b94f04b`
   );
   xhr.send();
 }
