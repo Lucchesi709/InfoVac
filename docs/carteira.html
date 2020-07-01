@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="estilocarteira.css">
+    <title>InfoVac</title>
+    <script src="login.js"></script>
+    <script>
+        // Verifica se o usuário já esta logado e se negativo, redireciona para tela de login        
+        if (!usuarioCorrente.login) {
+            window.location.href = LOGIN_URL;
+        }
+
+        function initPage() {
+
+            // Associa a função de logout ao botão
+            document.getElementById('btn_logout').addEventListener('click', logoutUser);
+
+            // Informa o nome do usuário logado
+            document.getElementById('nomeUsuario').innerHTML = usuarioCorrente.nome;
+            document.getElementById('sexoUsuario').innerHTML = usuarioCorrente.sexo;
+            document.getElementById('nascUsuario').innerHTML = usuarioCorrente.data;
+            document.getElementById('cidadeUsuario').innerHTML = usuarioCorrente.cidade;
+            document.getElementById('estadoUsuario').innerHTML = usuarioCorrente.estado;
+
+            // Lista os usuários 
+            exibeUsuarios();
+        }
+
+        // Associa ao evento de carga da página a função para verificar se o usuário está logado
+        window.addEventListener('load', initPage);
+    </script>
+</head>
+
+<body>
+    <header>
+        <!-- Header -->
+        <section id="header">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg" id="cabecalho">
+                    <h5 class="navbar-brand" id="Logo">InfoVac</h5>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-none d-sm-none" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="portalisv.html">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Suporte</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #07614c;" id="menu">
+                    <a class="navbar-brand d-md-none" href="#">Menu</a>
+                    <button class="navbar-toggler justify-content-right" type="button" data-toggle="collapse"
+                        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Perfil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="carteira.html">Carteira de Vacinação</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="agenda.html">Agenda</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Calendario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Configurações</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </section>
+    </header>
+    <!-- Header -->
+    <main>
+        <table class="table">
+            <thead class="thead">
+                <tr>
+                    <th scope="col">DOSES</th>
+                    <th scope="col">POLIO</th>
+                    <th scope="col">DPT</th>
+                    <th scope="col">HEP.B</th>
+                    <th scope="col">HAEMOPHILUS</th>
+                    <th scope="col">BCG</th>
+                    <th scope="col">SARAMPO</th>
+                    <th scope="col">TRIVIRAL</th>
+                    <th scope="col">FEBRE AMARELA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" class="doses">1ª DOSE</th>
+                    <td id="P1">
+                        <button type="button" class="btn btn-primary" id="btnOKP1">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNP1">NÃO</button>
+                    </td>
+                    <td id="DP1">
+                        <button type="button" class="btn btn-primary" id="btnOKD1">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnND1">NÃO</button>
+                    </td>
+                    <td id="HE1">
+                        <button type="button" class="btn btn-primary" id="btnOKHE1">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNHE1">NÃO</button>
+                    </td>
+                    <td id="HA1">
+                        <button type="button" class="btn btn-primary" id="btnOKHA1">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNHA1">NÃO</button>
+                    </td>
+                    <td id="BC1">
+                        <button type="button" class="btn btn-primary" id="btnOKBC1">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNBC1">NÃO</button>
+                    </td>
+                    <td id="SA1">
+                        <button type="button" class="btn btn-primary" id="btnOKSA1">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNSA1">NÃO</button>
+                    </td>
+                    <td id="TR1">
+                        <button type="button" class="btn btn-primary" id="btnOKTR1">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNTR1">NÃO</button>
+                    </td>
+                    <td id="FA1">
+                        <button type="button" class="btn btn-primary" id="btnOKFA1">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNFA1">NÃO</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="doses">2ª DOSE</th>
+                    <td id='P2'>
+                        <button type="button" class="btn btn-primary" id="btnOKP2">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNP2">NÃO</button>
+                    </td>
+                    <td id="DP2">
+                        <button type="button" class="btn btn-primary" id="btnOKD2">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnND2">NÃO</button>
+                    </td>
+                    <td id="HE2">
+                        <button type="button" class="btn btn-primary" id="btnOKHE2">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNHE2">NÃO</button>
+                    </td>
+                    <td id="HA2">
+                        <button type="button" class="btn btn-primary" id="btnOKHA2">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNHA2">NÃO</button>
+                    </td>
+                    <td id="BC2">
+                        <button type="button" class="btn btn-primary" id="btnOKBC2">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNBC2">NÃO</button>
+                    </td>
+                    <td id="SA2">
+                        <button type="button" class="btn btn-primary" id="btnOKSA2">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNSA2">NÃO</button>
+                    </td>
+                    <td id="TR2">
+                        <button type="button" class="btn btn-primary" id="btnOKTR2">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNTR2">NÃO</button>
+                    </td>
+                    <td id="FA2">
+                        <button type="button" class="btn btn-primary" id="btnOKFA2">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNFA2">NÃO</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="doses">1º REFORÇO</th>
+                    <td id='P3'>
+                        <button type="button" class="btn btn-primary" id="btnOKP3">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNP3">NÃO</button>
+                    </td>
+                    <td id="DP3">
+                        <button type="button" class="btn btn-primary" id="btnOKD3">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnND3">NÃO</button>
+                    </td>
+                    <td id="HE3">
+                        <button type="button" class="btn btn-primary" id="btnOKHE3">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNHE3">NÃO</button>
+                    </td>
+                    <td id="HA3">
+                        <button type="button" class="btn btn-primary" id="btnOKHA3">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNHA3">NÃO</button>
+                    </td>
+                    <td id="BC3">
+                        <button type="button" class="btn btn-primary" id="btnOKBC3">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNBC3">NÃO</button>
+                    </td>
+                    <td id="SA3">
+                        <button type="button" class="btn btn-primary" id="btnOKSA3">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNSA3">NÃO</button>
+                    </td>
+                    <td id="TR3">
+                        <button type="button" class="btn btn-primary" id="btnOKTR3">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNTR3">NÃO</button>
+                    </td>
+                    <td id="FA3">
+                        <button type="button" class="btn btn-primary" id="btnOKFA3">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNFA3">NÃO</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="doses">2º REFORÇO</th>
+                    <td id='P4'>
+                        <button type="button" class="btn btn-primary" id="btnOKP4">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNP4">NÃO</button>
+                    </td>
+                    <td id="DP4">
+                        <button type="button" class="btn btn-primary" id="btnOKD4">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnND4">NÃO</button>
+                    </td>
+                    <td id="HE4">
+                        <button type="button" class="btn btn-primary" id="btnOKHE4">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNHE4">NÃO</button>
+                    </td>
+                    <td id="HA4">
+                        <button type="button" class="btn btn-primary" id="btnOKHA4">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNHA4">NÃO</button>
+                    </td>
+                    <td id="BC4">
+                        <button type="button" class="btn btn-primary" id="btnOKBC4">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNBC4">NÃO</button>
+                    </td>
+                    <td id="SA4">
+                        <button type="button" class="btn btn-primary" id="btnOKSA4">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNSA4">NÃO</button>
+                    </td>
+                    <td id="TR4">
+                        <button type="button" class="btn btn-primary" id="btnOKTR4">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNTR4">NÃO</button>
+                    </td>
+                    <td id="FA4">
+                        <button type="button" class="btn btn-primary" id="btnOKFA4">OK</button>
+                        <button type="button" class="btn btn-primary" id="btnNFA4">NÃO</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="cOK">
+            <div class="columns">
+                <p>OK - Já tomou a Vacina.</p>
+                <p>NÃO - Não tomou a Vacina/dose.</p>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <section id="footer">
+            <div class="container">
+                <div class="row text-center text-xs-center text-sm-left text-md-left">
+                    <div class="col-xs-12 col-sm-4 col-md-4 footerQuem">
+                        <h5>Links Rápidos</h5>
+                        <ul class="list-unstyled quick-links">
+                            <li><a href="portalisv.html"><i class="fa fa-angle-double-right"></i>Portal</a></li>
+                            <li><a href="quemsomos.html"><i class="fa fa-angle-double-right"></i>Quem Somos</a></li>
+                            <li><a href="https://saude.gov.br/"><i class="fa fa-angle-double-right"></i>Ministério Da
+                                    Saude</a></li>
+                            <li><a href="https://coronavirus.saude.gov.br/"><i
+                                        class="fa fa-angle-double-right"></i>CORONAVÍRUS</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                        <ul class="list-unstyled list-inline social text-center">
+                            <li class="list-inline-item"><a href="https://www.facebook.com/"><i
+                                        class="fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="https://twitter.com/"><i
+                                        class="fa fa-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item"><a href="https://www.instagram.com/"><i
+                                        class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.google.com.br/"><i
+                                        class="fa fa-google"></i></a></li>
+                            <li class="list-inline-item"><a href="https://mail.google.com/mail/u/0/" target="_blank"><i
+                                        class="fa fa-envelope"></i></a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                        <p class="h6">© Todos os direitos reservados.<a class="text-green ml-2" href="#"
+                                target="_blank">InfoVac</a></p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </section>
+        <!-- ./Footer -->
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="carteira.js"></script>
+</body>
