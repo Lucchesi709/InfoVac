@@ -25,6 +25,11 @@ var dia = [{
 	"vacina":"dengue",
 	"mes":"7",
 	"dia":"3"
+},
+{
+	"vacina":"Apresentação",
+	"mes":"7",
+	"dia":"7"
 }]
 
 function mostrarNotificacao(){
